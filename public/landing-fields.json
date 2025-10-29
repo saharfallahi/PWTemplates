@@ -1,0 +1,273 @@
+{
+  "key": "group_671aacf1dental",
+  "title": "Dental Landing Fields",
+  "fields": [
+    {
+      "key": "field_site",
+      "label": "Site",
+      "name": "site",
+      "type": "group",
+      "sub_fields": [
+        {
+          "key": "field_site_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_site_logo",
+          "label": "Logo",
+          "name": "logo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        }
+      ]
+    },
+    {
+      "key": "field_hero",
+      "label": "Hero Section",
+      "name": "hero",
+      "type": "group",
+      "sub_fields": [
+        {
+          "key": "field_doctorName",
+          "label": "Doctor Name",
+          "name": "doctorName",
+          "type": "text"
+        },
+        {
+          "key": "field_specialty",
+          "label": "Specialty",
+          "name": "specialty",
+          "type": "text"
+        },
+        {
+          "key": "field_description",
+          "label": "Description",
+          "name": "description",
+          "type": "textarea"
+        },
+        {
+          "key": "field_ctaText",
+          "label": "CTA Text",
+          "name": "ctaText",
+          "type": "text"
+        },
+        {
+          "key": "field_doctorImage",
+          "label": "Doctor Image",
+          "name": "doctorImage",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        }
+      ]
+    },
+    {
+      "key": "field_about",
+      "label": "About Section",
+      "name": "about",
+      "type": "group",
+      "sub_fields": [
+        {
+          "key": "field_about_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_about_paragraphs",
+          "label": "Paragraphs",
+          "name": "paragraphs",
+          "type": "repeater",
+          "sub_fields": [
+            {
+              "key": "field_about_paragraph",
+              "label": "Paragraph",
+              "name": "paragraph",
+              "type": "textarea"
+            }
+          ]
+        },
+        {
+          "key": "field_about_stats",
+          "label": "Stats",
+          "name": "stats",
+          "type": "repeater",
+          "sub_fields": [
+            {
+              "key": "field_stat_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text"
+            },
+            {
+              "key": "field_stat_value",
+              "label": "Value",
+              "name": "value",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_about_clinicImage",
+          "label": "Clinic Image",
+          "name": "clinicImage",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        }
+      ]
+    },
+    {
+      "key": "field_services",
+      "label": "Services",
+      "name": "services",
+      "type": "repeater",
+      "sub_fields": [
+        {
+          "key": "field_service_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "key": "field_service_description",
+          "label": "Description",
+          "name": "description",
+          "type": "textarea"
+        },
+        {
+          "key": "field_service_image",
+          "label": "Image",
+          "name": "image",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "medium"
+        }
+      ]
+    },
+    {
+      "key": "field_footer",
+      "label": "Footer",
+      "name": "footer",
+      "type": "group",
+      "sub_fields": [
+        {
+          "key": "field_footer_contact",
+          "label": "Contact",
+          "name": "contact",
+          "type": "group",
+          "sub_fields": [
+            {
+              "key": "field_phone",
+              "label": "Phone",
+              "name": "phone",
+              "type": "text"
+            },
+            {
+              "key": "field_email",
+              "label": "Email",
+              "name": "email",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_footer_address",
+          "label": "Address",
+          "name": "address",
+          "type": "group",
+          "sub_fields": [
+            {
+              "key": "field_line1",
+              "label": "Line 1",
+              "name": "line1",
+              "type": "text"
+            },
+
+            {
+              "key": "field_line2",
+              "label": "Line 2",
+              "name": "line2",
+              "type": "text"
+            },
+            {
+              "key": "field_line3",
+              "label": "Line 3",
+              "name": "line3",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_footer_hours",
+          "label": "Hours",
+          "name": "hours",
+          "type": "repeater",
+          "sub_fields": [
+            {
+              "key": "field_hour_label",
+              "label": "Label",
+              "name": "label",
+              "type": "text"
+            },
+            {
+              "key": "field_hour_value",
+              "label": "Value",
+              "name": "value",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_footer_social",
+          "label": "Social",
+          "name": "social",
+          "type": "group",
+          "sub_fields": [
+            {
+              "key": "field_instagram",
+              "label": "Instagram",
+              "name": "instagram",
+              "type": "url"
+            },
+            {
+              "key": "field_telegram",
+              "label": "Telegram",
+              "name": "telegram",
+              "type": "url"
+            },
+            {
+              "key": "field_whatsapp",
+              "label": "WhatsApp",
+              "name": "whatsapp",
+              "type": "url"
+            }
+          ]
+        },
+        {
+          "key": "field_footer_copyright",
+          "label": "Copyright",
+          "name": "copyright",
+          "type": "textarea"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "landing"
+      }
+    ]
+  ],
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}
