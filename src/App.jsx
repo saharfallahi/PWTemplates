@@ -5,6 +5,7 @@ import ServicesSection from "./components/ServicesSection";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import useWordpressData from "./hooks/useWordpressData";
+import PortfolioSection from "./components/PortfolioSection";
 
 function App() {
   // const [content, setContent] = useState(null);
@@ -19,7 +20,6 @@ function App() {
   if (loading) return <p>Loading...</p>;
 
   const landing = data?.[0]?.acf;
-
 
   // Map WordPress ACF fields to component structure
   const mappedData = {
@@ -46,6 +46,12 @@ function App() {
         landing?.clinic_image || landing?.about?.clinicImage || "/clinic.jpg",
     },
     services: landing?.services || landing?.services || [],
+    portfolio: {
+      images: (landing?.portfolio?.items || [])
+        .map((item) => item?.image?.url)
+        .filter(Boolean),
+      speedSeconds: landing?.portfolio?.speedSeconds,
+    },
     footer: {
       contact: {
         phone:
@@ -91,10 +97,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white ">
-      <Navbar data={mappedData.site}  />
+      <Navbar data={mappedData.site} />
       <HeroSection data={mappedData.hero} />
       <AboutSection data={mappedData.about} />
       <ServicesSection data={mappedData.services} />
+      <PortfolioSection data={mappedData.portfolio} />
       <Footer data={mappedData.footer} />
     </div>
   );

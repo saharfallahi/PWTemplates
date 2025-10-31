@@ -26,22 +26,24 @@ const ServicesSection = ({ data }) => {
               key={service.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-2"
             >
-              {/* Service Image */}
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center overflow-hidden">
-                {service.image.url ? (
-                  <img
-                    src={service?.image?.url}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-center">
-                    <div className="text-6xl mb-2">{service.icon || "🦷"}</div>
-                    <div className="text-blue-600 font-medium">
-                      تصویر {service.title}
-                    </div>
-                  </div>
-                )}
+              {/* Service Icon/Image - from WordPress only (no fallback) */}
+              <div className="h-48 bg-white flex items-center justify-center overflow-hidden">
+                {(() => {
+                  // Priority: icon from WP, then image from WP
+                  const iconUrl = service?.icon?.url;
+                  const imageUrl = service?.image?.url;
+                  const imageSrc = iconUrl || imageUrl;
+
+                  if (!imageSrc) return null;
+
+                  return (
+                    <img
+                      src={imageSrc}
+                      alt={service.title || "Service Icon"}
+                      className="w-24 h-24 object-contain"
+                    />
+                  );
+                })()}
               </div>
 
               {/* Service Content */}

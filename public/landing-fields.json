@@ -149,6 +149,42 @@
       ]
     },
     {
+      "key": "field_portfolio",
+      "label": "Portfolio",
+      "name": "portfolio",
+      "type": "group",
+      "sub_fields": [
+        {
+          "key": "field_portfolio_items",
+          "label": "Items",
+          "name": "items",
+          "type": "repeater",
+          "sub_fields": [
+            {
+              "key": "field_portfolio_image",
+              "label": "Image",
+              "name": "image",
+              "type": "image",
+              "return_format": "array",
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_portfolio_alt",
+              "label": "Alt Text",
+              "name": "alt",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "field_portfolio_speed",
+          "label": "Speed (seconds per loop)",
+          "name": "speedSeconds",
+          "type": "number"
+        }
+      ]
+    },
+    {
       "key": "field_footer",
       "label": "Footer",
       "name": "footer",
