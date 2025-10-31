@@ -37,6 +37,12 @@ const Navbar = ({ data }) => {
             >
               خدمات
             </button>
+            <button
+              className="nav-link"
+              onClick={() => handleNavigate("#portfolio")}
+            >
+              نمونه کارها
+            </button>
           </nav>
 
           {/* Hamburger (mobile) on the right */}
@@ -119,6 +125,12 @@ const Navbar = ({ data }) => {
             onClick={() => handleNavigate("#services")}
           >
             خدمات
+          </button>
+          <button
+            className="block w-full text-right  nav-link"
+            onClick={() => handleNavigate("#portfolio")}
+          >
+            نمونه کارها
           </button>
         </div>
       </div>
