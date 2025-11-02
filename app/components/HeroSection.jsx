@@ -1,6 +1,8 @@
-import React from "react";
+import Image from "next/image";
 
-const HeroSection = ({ data }) => {
+export default function HeroSection({ data }) {
+  const imageUrl = data?.doctorImage?.url || "/doctor.png";
+  
   return (
     <section
       id="hero"
@@ -29,16 +31,20 @@ const HeroSection = ({ data }) => {
 
           {/* Right side - Doctor Image */}
           <div className="flex-1 flex justify-center lg:justify-end order-1 lg:order-2">
-            <img
-              src={data?.doctorImage?.url || "/doctor.png"}
-              alt="عکس دکتر"
-              className="w-80 h-96 lg:w-[500px] lg:h-[500px] object-contain bg-transparent"
-            />
+            <div className="relative w-80 h-96 lg:w-[500px] lg:h-[500px]">
+              <Image
+                src={imageUrl}
+                alt="عکس دکتر"
+                fill
+                className="object-contain bg-transparent"
+                sizes="(max-width: 1024px) 320px, 500px"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
-export default HeroSection;

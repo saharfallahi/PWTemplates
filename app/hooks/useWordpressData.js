@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const BASE_URL = "http://localhost/wordpress/wp-json/wp/v2/landing";
@@ -23,3 +25,4 @@ export default function useWordpressData() {
 
   return { data, loading, error };
 }
+

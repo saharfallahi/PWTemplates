@@ -1,6 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+"use client";
 
-const PortfolioSection = ({ data }) => {
+import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+
+export default function PortfolioSection({ data }) {
   const trackRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -24,7 +27,10 @@ const PortfolioSection = ({ data }) => {
   }, [data?.images, fallbackImages]);
 
   // Duplicate list for seamless marquee
-  const marqueeImages = useMemo(() => [...images, ...images], [images]);
+  const marqueeImages = useMemo(
+    () => [...images, ...images, ...images, ...images, ...images],
+    [images]
+  );
 
   // Pause on hover/touch over the whole track
   const handlePause = () => setIsPaused(true);
@@ -97,36 +103,23 @@ const PortfolioSection = ({ data }) => {
             {marqueeImages.map((src, idx) => (
               <div
                 key={`${src}-${idx}`}
-                className="shrink-0 w-64 lg:w-80 h-44 lg:h-52 rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm"
+                className="shrink-0 w-64 lg:w-80 h-44 lg:h-52 rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm relative "
+                onMouseEnter={handlePause}
+                onMouseLeave={handleResume}
               >
-                <img
+                <Image
                   src={src}
                   alt="نمونه کار دندانپزشکی"
-                  className="w-full h-full object-cover"
-                  onMouseEnter={handlePause}
-                  onMouseLeave={handleResume}
+                  fill
+                  className="object-cover select-none"
+                  sizes="(max-width: 1024px) 256px, 320px"
                   draggable={false}
                 />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Small helper note for mobile */}
-        <div className="mt-4 text-center text-sm text-gray-500 lg:hidden">
-          برای توقف حرکت، لمس را نگه دارید
-        </div>
       </div>
-
-      {/* Keyframes for marquee (scoped via inline style tag) */}
-      <style>{`
-        @keyframes marquee-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
-};
-
-export default PortfolioSection;
+}

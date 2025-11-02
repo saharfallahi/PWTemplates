@@ -1,16 +1,107 @@
-# React + Vite
+# Next.js + Tailwind CSS - Dental Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+این پروژه یک صفحه لندینگ دندانپزشکی است که با Next.js و Tailwind CSS نسخه 3.4.18 ساخته شده است.
 
-Currently, two official plugins are available:
+## ویژگی‌ها
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡️ **Next.js 15** با App Router
+- 🎨 **Tailwind CSS 3.4.18**
+- 🔍 **SEO Optimized** - Server-Side Rendering (SSR)
+- 📱 **Responsive Design**
+- 🔄 **WordPress Integration** - اتصال به WordPress REST API
 
-## React Compiler
+## شروع کار
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### پیش‌نیازها
 
-## Expanding the ESLint configuration
+- Node.js 18+
+- npm یا yarn یا pnpm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### نصب
+
+```bash
+npm install
+```
+
+### اجرای پروژه در حالت Development
+
+```bash
+npm run dev
+```
+
+پروژه در `http://localhost:3000` اجرا می‌شود.
+
+### Build برای Production
+
+```bash
+npm run build
+npm start
+```
+
+## تنظیمات Environment Variables
+
+برای اتصال به WordPress API، یک فایل `.env.local` در ریشه پروژه ایجاد کنید:
+
+```env
+WORDPRESS_API_URL=http://your-wordpress-site.com/wp-json/wp/v2/landing
+```
+
+**نکته مهم:**
+
+- در حالت Development می‌توانید از `localhost` استفاده کنید
+- در Production باید URL کامل WordPress سایت خود را وارد کنید
+- اگر این متغیر تنظیم نشود، به طور پیش‌فرض از `http://localhost/wordpress/wp-json/wp/v2/landing` استفاده می‌شود
+
+## ساختار پروژه
+
+```
+├── app/
+│   ├── components/     # کامپوننت‌های React
+│   ├── context/        # Context API
+│   ├── hooks/          # Custom Hooks
+│   ├── lib/           # توابع کمکی Server-side
+│   ├── globals.css    # استایل‌های جهانی
+│   ├── layout.jsx     # Layout اصلی
+│   └── page.jsx        # صفحه اصلی (Server Component)
+├── public/            # فایل‌های استاتیک
+└── ...
+```
+
+## SEO و Server-Side Rendering
+
+این پروژه از Server-Side Rendering استفاده می‌کند که باعث می‌شود:
+
+- ✅ محتوا در HTML اولیه وجود داشته باشد (View Source)
+- ✅ موتورهای جستجو بتوانند محتوا را index کنند
+- ✅ Performance بهتر برای کاربر
+
+## تکنولوژی‌ها
+
+- **Next.js 15** - React Framework
+- **Tailwind CSS 3.4.18** - Utility-first CSS
+- **React 19** - UI Library
+
+## اسکریپت‌ها
+
+- `npm run dev` - اجرای پروژه در حالت Development
+- `npm run build` - Build پروژه برای Production
+- `npm start` - اجرای پروژه Build شده
+- `npm run lint` - اجرای ESLint
+
+## نکات مهم
+
+- در Production، حتماً URL WordPress API را در `.env.local` تنظیم کنید
+- برای بهینه‌سازی SEO، محتوا در Server-Side render می‌شود
+- اگر API در دسترس نباشد، محتوای پیش‌فرض نمایش داده می‌شود
+
+## مشکلات احتمالی
+
+### خطای CORS در Production
+
+اگر در Production با خطای CORS مواجه شدید، باید در WordPress تنظیمات CORS را فعال کنید.
+
+### داده‌ها نمایش داده نمی‌شوند
+
+- بررسی کنید که URL WordPress API صحیح باشد
+- بررسی کنید که endpoint `/wp-json/wp/v2/landing` در WordPress وجود داشته باشد
+- در حالت Development، مطمئن شوید که WordPress در حال اجرا است

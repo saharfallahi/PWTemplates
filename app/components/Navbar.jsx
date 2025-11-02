@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import useOutsideClick from "../hooks/useOutsideClick";
+"use client";
 
-const Navbar = ({ data }) => {
+import { useState } from "react";
+import Image from "next/image";
+import useOutsideClick from "@/hooks/useOutsideClick";
+
+export default function Navbar({ data }) {
   const [open, setOpen] = useState(false);
   const menuRef = useOutsideClick(() => setOpen(false));
 
@@ -89,7 +92,15 @@ const Navbar = ({ data }) => {
             <span className="hidden lg:inline text-gray-700 font-semibold">
               {data.title}
             </span>
-            <img src={data.logo.url} alt="لوگو" className="h-8 w-auto" />
+            <div className="relative h-8 aspect-square">
+              <Image
+                src={data.logo.url}
+                alt="لوگو"
+                fill
+                className="object-contain"
+                sizes="32px"
+              />
+            </div>
           </a>
         </div>
       </div>
@@ -136,6 +147,5 @@ const Navbar = ({ data }) => {
       </div>
     </header>
   );
-};
+}
 
-export default Navbar;

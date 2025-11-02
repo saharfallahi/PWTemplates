@@ -1,6 +1,4 @@
-import React from "react";
-
-const Footer = ({ data }) => {
+export default function Footer({ data }) {
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="mx-auto px-4" style={{ maxWidth: "1024px" }}>
@@ -143,6 +141,5 @@ const Footer = ({ data }) => {
       </div>
     </footer>
   );
-};
+}
 
-export default Footer;

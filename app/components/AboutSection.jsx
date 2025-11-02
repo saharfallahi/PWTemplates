@@ -1,16 +1,20 @@
-import React from "react";
+import Image from "next/image";
 
-const AboutSection = ({ data }) => {
+export default function AboutSection({ data }) {
+  const imageUrl = data?.clinicImage?.url || "/clinic.jpg";
+
   return (
     <section id="about" className="py-20 lg:py-24 bg-white">
       <div className="container-std">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left side - Clinic Image */}
-          <div className="flex-1 order-2 lg:order-1">
-            <img
-              src={data?.clinicImage?.url || "/clinic.jpg"}
+          <div className="flex-1 order-2 lg:order-1 relative w-full h-80 lg:h-96">
+            <Image
+              src={imageUrl}
               alt="تصویر کلینیک"
-              className="w-full h-80 lg:h-96 object-cover rounded-2xl"
+              fill
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
 
@@ -46,6 +50,4 @@ const AboutSection = ({ data }) => {
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}
