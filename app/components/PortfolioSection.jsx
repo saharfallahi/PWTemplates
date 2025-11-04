@@ -6,6 +6,7 @@ import Image from "next/image";
 export default function PortfolioSection({ data }) {
   const trackRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // You can replace or extend these with dynamic data later
   const fallbackImages = useMemo(
@@ -55,13 +56,27 @@ export default function PortfolioSection({ data }) {
     };
   }, []);
 
+  // Detect mobile viewport for responsive speed
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   // Animation duration based on number of items (tweak if needed)
   const durationSeconds = useMemo(() => {
     if (typeof data?.speedSeconds === "number" && data.speedSeconds > 0) {
-      return data.speedSeconds;
+      // Speed override provided; make mobile a bit faster
+      return isMobile
+        ? Math.max(6, Math.round(data.speedSeconds * 0.6))
+        : data.speedSeconds;
     }
-    return Math.max(20, Math.round(images.length * 3));
-  }, [data?.speedSeconds, images.length]);
+    const desktop = Math.max(20, Math.round(images.length * 3));
+    const mobile = Math.max(10, Math.round(images.length * 2));
+    return isMobile ? mobile : desktop;
+  }, [data?.speedSeconds, images.length, isMobile]);
 
   return (
     <section id="portfolio" className="py-20 lg:py-24 bg-white">
