@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <head>
-        <link rel="stylesheet" href="/fonts.css" />
+        <link rel="stylesheet" href="./fonts.css" />
       </head>
       <body>{children}</body>
     </html>
